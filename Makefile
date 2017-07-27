@@ -6,5 +6,11 @@ composer-install:
 composer-update:
 	@docker run --rm --volume $(PWD):/app composer update
 
-unit-test:
-	@docker run --rm --volume $(PWD):/app composer run-script test tests/
+test:
+	@docker run --rm --volume $(PWD):/app composer run-script test
+
+test-unit:
+	@docker run --rm --volume $(PWD):/app composer run-script test-unit
+
+test-integration:
+	@docker run --rm --volume $(PWD):/app composer run-script test-integration
