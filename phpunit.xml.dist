@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit colors="true">
+    <testsuites>
+        <testsuite name="Boleto Simples Test Suite">
+            <directory>tests/BoletoSimples/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/BoletoSimples/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
