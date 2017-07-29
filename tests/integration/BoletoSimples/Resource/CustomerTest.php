@@ -5,7 +5,7 @@ namespace BoletoSimples\Tests;
 use PHPUnit\Framework\TestCase;
 
 use BoletoSimples\Configuration;
-use BoletoSimples\Resource\Customer;
+use BoletoSimples\Service\Api\Customer;
 
 final class CustomerTest extends TestCase
 {
@@ -16,8 +16,8 @@ final class CustomerTest extends TestCase
 
     public function testGetClientList()
     {
-        $resource = new Customer($this->getValidConfiguration());
+        $service = new Customer($this->getValidConfiguration());
 
-        $this->assertTrue($resource->getClientList());
+        $this->assertEquals(200, $service->getAll()->getStatusCode());
     }
 }

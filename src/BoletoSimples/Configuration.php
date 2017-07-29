@@ -41,4 +41,9 @@ final class Configuration
     {
         return 'User-Agent: ' . $this->getApplicationName();
     }
+
+    public function getPassword()
+    {
+        return 'x';
+    }
 }
