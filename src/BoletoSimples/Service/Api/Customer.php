@@ -2,15 +2,12 @@
 
 namespace BoletoSimples\Service\Api;
 
-use BoletoSimples\Configuration;
+use BoletoSimples\Service\Api\Api;
 use BoletoSimples\Service\AbstractService;
 
 final class Customer extends AbstractService
 {
-    public function __construct(Configuration $configuration)
-    {
-        parent::__construct($configuration);
-    }
+    use Api;
 
     const URI = 'customers';
 }

@@ -4,20 +4,60 @@ namespace BoletoSimples\Tests;
 
 use PHPUnit\Framework\TestCase;
 
-use BoletoSimples\Configuration;
-use BoletoSimples\Service\Api\Customer;
+use BoletoSimples\Entity\Customer;
+use BoletoSimples\Service\HttpRequester;
+use BoletoSimples\Service\Api\Customer as CustomerApi;
 
 final class CustomerTest extends TestCase
 {
-    public function getValidConfiguration()
+    private $service;
+
+    private function getService()
     {
-        return new Configuration(API_ENVIRONMENT, API_BASE_URI, API_TOKEN, API_APP);
+        if (!$this->service) {
+            $this->service = new CustomerApi(HttpRequester::getInstance());
+        }
+
+        return $this->service;
     }
 
-    public function testGetClientList()
+    private function getValidCustomer()
     {
-        $service = new Customer($this->getValidConfiguration());
+        $name         = 'Nome do Cliente';
+        $cnpjCpf      = '125.812.717-28';
+        $zipcode      = '20071004';
+        $address      = 'Rua quinhentos';
+        $cityName     = 'Rio de Janeiro';
+        $state        = 'RJ';
+        $neighborhood = 'bairro';
 
-        $this->assertEquals(200, $service->getAll()->getStatusCode());
+        return new Customer(
+            $name,
+            $cnpjCpf,
+            $zipcode,
+            $address,
+            $cityName,
+            $state,
+            $neighborhood
+        );
+    }
+
+    public function testGetAll()
+    {
+        $service = $this->getService();
+
+        $response = $service->getAll();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('[]', $response->getBody()->getContents());
+    }
+
+    public function testCreate()
+    {
+        $customer = $this->getValidCustomer();
+
+        $service = $this->getService();
+
+        $response = $service->create($customer);
     }
 }
