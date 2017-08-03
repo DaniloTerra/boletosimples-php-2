@@ -12,5 +12,8 @@ test:
 test-unit:
 	@docker run --rm --volume $(PWD):/app composer run-script test-unit
 
+test-unit-report:
+	@docker run --rm --volume $(PWD):/app composer run-script test-unit-report
+
 test-integration:
 	@docker run --rm --volume $(PWD):/app composer run-script test-integration

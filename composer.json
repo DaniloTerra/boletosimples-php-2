@@ -35,6 +35,7 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-unit": "vendor/bin/phpunit --testsuite unit",
+        "test-unit-report": "vendor/bin/phpunit --testsuite unit --coverage-html report",
         "test-integration": "vendor/bin/phpunit --testsuite integration"
     }
 }
