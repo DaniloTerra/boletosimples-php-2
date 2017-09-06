@@ -1,3 +1,5 @@
 /vendor/
 /tests/credentials.php
 /report
+./teste.php
+./requests.txt
