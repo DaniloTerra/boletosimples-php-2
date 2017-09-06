@@ -2,9 +2,9 @@
 
 namespace BoletoSimples\Entity;
 
-use BoletoSimples\Entity\Entity;
+use BoletoSimples\Entity\EntityInterface;
 
-final class Customer implements Entity
+final class Customer implements EntityInterface
 {
     private $person_name;
     private $cnpj_cpf;

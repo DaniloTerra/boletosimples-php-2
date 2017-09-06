@@ -2,10 +2,9 @@
 
 namespace BoletoSimples\Service;
 
-use BoletoSimples\Service\HttpRequest;
-use BoletoSimples\Entity\Entity;
+use BoletoSimples\Service\HttpRequester;
 
-abstract class AbstractService
+abstract class AbstractService implements ServiceInterface
 {
     private $requester;
 
@@ -14,42 +13,40 @@ abstract class AbstractService
         $this->requester = $requester;
     }
 
-    public function getAll()
+    public function create(array $data)
     {
-        return $this->requester->get(static::URI);
+        return $this->requester->post(static::URI, $data);
     }
 
     public function getById($id)
     {
         if (gettype($id) !== 'integer') {
-            throw new InvalidArgumentException('Invalid type for ID');
+            throw new \InvalidArgumentException('Invalid type for ID');
         }
 
         return $this->requester->get(static::URI . '/' .  $id);
     }
 
-    public function create(Entity $entity)
-    {
-        return $this->requester->post(static::URI, $entity);
-    }
-
-    public function replaceById($id, Entity $entity)
+    public function update($id, array $data)
     {
         $uri = static::URI . '/' . $id;
-        return $this->requester->put($uri, $entity);
+        return $this->requester->patch($uri, $data);
     }
 
-    public function updateById($id, Entity $entity)
+    public function replace($id, array $data)
     {
         $uri = static::URI . '/' . $id;
-        return $this->requester->patch($uri, $entity);    }
+        return $this->requester->put($uri, $data);
+    }
 
-    public function deleteById($id)
+    public function delete($id)
     {
-        if (gettype($id) !== 'integer') {
-            throw new InvalidArgumentException('Invalid type for ID');
-        }
+        $uri = static::URI . '/' . $id;
+        return $this->requester->delete($uri);
+    }
 
-        return $this->requester->delete(static::URI . '/' .  $id);
+    public function getAll()
+    {
+        return $this->requester->get(static::URI);
     }
 }

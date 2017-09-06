@@ -7,7 +7,6 @@ use GuzzleHttp\Psr7\Request;
 
 use BoletoSimples\Configuration;
 use BoletoSimples\Service\HttpClient;
-use BoletoSimples\Entity\Entity;
 
 final class HttpRequester
 {
@@ -33,27 +32,27 @@ final class HttpRequester
         return $this->httpClient->getClient()->get($uri);
     }
 
-    public function post($uri, Entity $entity)
+    public function post($uri, array $data)
     {
         return $this->httpClient->getClient()->post(
             $uri,
-            [ 'json' => $entity->toApiArray() ]
+            ['json' => $data]
         );
     }
 
-    public function put($uri, Entity $entity)
+    public function put($uri, array $data)
     {
         return $this->httpClient->getClient()->put(
             $uri,
-            [ 'json' => $entity->toApiArray() ]
+            ['json' => $data]
         );
     }
 
-    public function patch($uri, Entity $entity)
+    public function patch($uri, array $data)
     {
         return $this->httpClient->getClient()->patch(
             $uri,
-            [ 'json' => $entity->toApiArray() ]
+            ['json' => $data]
         );
     }
 

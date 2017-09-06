@@ -4,7 +4,7 @@ namespace BoletoSimples\Service\Api;
 
 use BoletoSimples\Service\HttpRequester;
 
-trait Api
+trait ApiTrait
 {
     public function __construct(HttpRequester $requester)
     {

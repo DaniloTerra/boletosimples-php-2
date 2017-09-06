@@ -2,7 +2,7 @@
 
 namespace BoletoSimples\Entity;
 
-interface Entity
+interface EntityInterface
 {
     public function toApiArray();
 }
