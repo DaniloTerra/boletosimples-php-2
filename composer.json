@@ -1,0 +1,40 @@
+{
+    "name": "boletosimples/boletosimples",
+    "description": "A PHP client library for easy access to Boleto Simples API",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["boleto", "simples", "boletosimples", "ecommerce"],
+    "homepage": "http://api.boletosimples.com.br",
+    "authors": [
+        {
+            "name": "Danilo Terra",
+            "email": "danilo_terra@live.com"
+        }
+    ],
+    "support": {
+        "email": "suport@boletosimples.com.br",
+        "issues": "http://github.com/BoletoSimples/boletosimples-php/issues",
+        "sources": "https://github.com/BoletoSimples/boletosimples-php"
+    },
+    "require": {
+        "guzzlehttp/guzzle": "6.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "BoletoSimples\\": "src/BoletoSimples"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BoletoSimples\\Tests\\": "tests/BoletoSimples"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-unit": "vendor/bin/phpunit --testsuite unit",
+        "test-unit-report": "vendor/bin/phpunit --testsuite unit --coverage-html report"
+    }
+}
